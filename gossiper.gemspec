@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/mjacobus/gossiper"
   s.summary     = "It eases the creation of messages for the users"
   s.description = "Eases the creation of email messages as well as user notification systems"
+  s.license     = "MIT"
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", ">= 3.2", "< 5.0"
