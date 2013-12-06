@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gossiper (0.0.1)
+    gossiper (0.0.2)
       rails (>= 3.2, < 5.0)
 
 GEM
