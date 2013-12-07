@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Gossiper::EmailSettings do
+describe Gossiper::EmailConfig do
   subject { described_class.new(notification) }
 
   let(:user)         { double(:user, email: 'user@email.com', name: 'User Name') }

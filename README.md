@@ -49,7 +49,7 @@ Unless a custom class exist for the notification.kind, the defaults apply:
 #### The default configuration
 
 ```ruby
-mail_settings = Gossiper::EmailSettings.new(notification)
+mail_settings = Gossiper::EmailConfig.new(notification)
 
 mail_setting.user                # => user
 
@@ -84,7 +84,7 @@ to create a class like follows:
 
 ```ruby
 # app/models/notifications/user_welcome_notification.rb
-class Notifications::UserWelcomeNotification < Gossiper::EmailSettings
+class Notifications::UserWelcomeNotification < Gossiper::EmailConfig
   def bcc
     [ notification.user.boss.email  ]
   end
@@ -112,7 +112,7 @@ Create a  initializers/gossiper.rb, so the user can change the default to and et
 ```ruby
 Gossiper.configure do |config|
   # change the default class of the configurations
-  config.default_delivery_base_class = 'Gossiper::EmailSettings'
+  config.default_delivery_base_class = 'Gossiper::EmailConfig'
 
   # Change the default user class
   configure.default_user_class = 'User'

@@ -1,5 +1,5 @@
 module Gossiper
-  class EmailSettings
+  class EmailConfig
     attr_reader :notification, :user
 
     def initialize(notification)
