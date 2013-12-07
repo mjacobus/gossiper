@@ -6,12 +6,6 @@ class DummyUser < Struct.new(:id)
   end
 end
 
-# TODO: Implement real class
-class Gossiper::Mailer
-  def self.notification_for(notification)
-  end
-end
-
 describe Gossiper::Notification, "#deliver" do
   it "calls deliver on the mail object and updates the delivery date" do
     mail = double(:mail)
@@ -52,6 +46,11 @@ end
 describe Gossiper::Notification, "#kind" do
   it "is required" do
     subject.should validate_presence_of(:kind)
+  end
+
+  it "underscores kinds" do
+    subject.kind = 'a  kind'
+    expect(subject.kind).to eq('a_kind')
   end
 end
 
@@ -95,6 +94,32 @@ describe Gossiper::Notification, "#user" do
   it "returns the user that owns the notification" do
     expect(subject.user).to be_a(DummyUser)
     expect(subject.user.id).to be(1)
+  end
+
+  it "memoizes the value" do
+    expect(subject.user).to be(subject.user)
+  end
+end
+
+describe Gossiper::Notification, "#user=" do
+  before do
+    subject.user_class = 'DummyClass'
+    subject.user_id    = 1
+    subject.user       = user
+  end
+
+  let(:user) { stub_model(User, id: 2) }
+
+  it "sets the user" do
+    expect(subject.user).to be(user)
+  end
+
+  it "changes the user_class" do
+    expect(subject.user_class).to eq('User')
+  end
+
+  it "changes the user id" do
+    expect(subject.user_id).to eq(2)
   end
 
   it "memoizes the value" do

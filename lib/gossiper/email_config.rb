@@ -15,16 +15,38 @@ module Gossiper
       end
     end
 
+    # TODO: Make configuration for default bcc
     def bcc
       []
     end
 
+    # TODO: Make configuration for default from
+    def from
+    end
+
+    # TODO: Make configuration for default cc
     def cc
       []
     end
 
-    def template
-      "notifications/#{notification.kind}"
+    def template_name
+      "#{notification.kind}_notification"
+    end
+
+    def template_path
+      'notifications'
+    end
+
+    def subject
+      I18n.t("gossiper.notifications.#{notification.kind}.subject")
+    end
+
+    def attachments
+      {}
+    end
+
+    def instance_variables
+      {}
     end
   end
 end

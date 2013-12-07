@@ -4,6 +4,12 @@ module Gossiper
 
     validates :kind, presence: true
 
+    def user=(user)
+      @user           = user
+      self.user_class = user.class.to_s
+      self.user_id    = user.id
+    end
+
     def user
       @user ||= user_class.constantize.find(user_id)
     end
@@ -24,6 +30,11 @@ module Gossiper
     def deliver!
       mail.deliver!
       update_delivered_at!
+    end
+
+    def kind=(value)
+      value = value.present? ? value.parameterize.underscore : nil
+      write_attribute(:kind, value)
     end
 
     def method_missing(method, *args, &block)
