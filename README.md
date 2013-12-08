@@ -2,6 +2,8 @@
 
 Helps to manage the user notification process.
 
+[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
+
 **Important**
 
 Gossiper is not fully implemented yet. See the "TODO" section so you know what parts of the following instructions are in fact a specification of what need to be done. If you like the idea, feel free to contribute.
