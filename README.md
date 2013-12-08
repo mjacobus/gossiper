@@ -4,7 +4,7 @@ Helps to manage the user notification process.
 
 **Important**
 
-Gossiper is not fully implemented yet. In fact, just a little part of it is. This page is mostly a "TODO" list. If you like the idea, feel free to contribute.
+Gossiper is not fully implemented yet. See the "TODO" section so you know what parts of the following instructions are in fact a specification of what need to be done. If you like the idea, feel free to contribute.
 
 ## Instalation
 
