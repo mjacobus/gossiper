@@ -66,8 +66,10 @@ mail_settings.subject   # defaults to
                         # I181.t('gossiper.notifications.user_welcome.subject')
                         # 'user_welcome' is the notification.kind
 
-mail_settings.template_name      # gossiper/notifications/user_welcome.[format].erb
-                                 # defaults to gossiper/notifications/:notification_type
+mail_settings.template_name      # user_welcome_notifcation
+                                 # defaults to {notification_type}_notification
+
+mail_settings.template_path      # notification
 
 mail_settings.instance_variables # Hash
                                  # this are the variables that will be available
