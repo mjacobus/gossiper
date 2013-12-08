@@ -32,7 +32,7 @@ notification.delivered? # => false
 notification.status     # => 'pending'
 ```
 
-Delivering it
+### Delivering notifications
 
 ```Ruby
 notification.deliver!   # deliver the message
@@ -49,7 +49,7 @@ email = Gossiper::Mailer.notification_for(notification)
 email.deliver! # or email.deliver
 ```
 
-### The configuration
+### The notification Config
 Unless a custom class exist for the notification.kind, the defaults apply:
 
 #### The default configuration
@@ -114,8 +114,7 @@ That will create the following files:
 
 ## Configuration
 
-Create a  initializers/gossiper.rb, so the user can change the default to and etc, as follows
-
+You can customize gossiper behavior by editing the ```config/initializer/gossiper.rb```
 ```ruby
 Gossiper.configure do |config|
   # change the default class of the configurations
@@ -133,6 +132,7 @@ end
 ```
 
 ## I18n (Localization, internacionalization)
+
 You can internationalize titles by editing the ```config/gossiper.{locale}.yml``` file, as follows:
 
 ```yaml
@@ -160,10 +160,23 @@ mount Gossiper::Engine, at: 'notifications'
 
 Now all you need is to go to /notifications path in your application.
 
-**IMPORTANT**
-The url is publicly available by default.
+#### The engine access control
+
+You change the configuration file like follows:
+
+```ruby
+Gossiper.configure do |config|
+  config.authorize_with do |controller|
+    unless current_user.is_admin?
+      redirect_to root_path, notice: 'Get out!'
+    end
+  end
+end
+```
+
 
 ## TODO
+
 - Generator
 - Configuration
 - Internationalizationfile on rails g gossiper:install
@@ -171,7 +184,9 @@ The url is publicly available by default.
 - Access Control in the engine
 
 ## Authors
+
 - [Marcelo Jacobus](https://github.com/mjacobus)
+
 
 ## Contributing
 
