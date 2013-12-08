@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206162236) do
+ActiveRecord::Schema.define(version: 20131206162038) do
 
   create_table "gossiper_notifications", force: true do |t|
     t.integer  "user_id"
