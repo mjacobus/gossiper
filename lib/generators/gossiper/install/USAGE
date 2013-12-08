@@ -1,0 +1,9 @@
+Description:
+    Install the configuration files
+
+Example:
+    rails generate gossiper:install
+
+    This will create:
+        config/initializers/gossiper.rb
+        config/locales/gossiper.en.yml
