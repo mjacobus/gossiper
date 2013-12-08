@@ -17,6 +17,11 @@ And then execute:
     $ bundle
     $ rails g gossiper:install
 
+This will create the following files:
+
+- ```app/initializers/gossiper.rb```
+- ```config/locales/gossiper.en.yaml```
+
 ## Usage
 
 ### Creating a notification in the database
@@ -25,18 +30,19 @@ And then execute:
 notification = Gossiper::Notification.create({ user: user, kind: 'user_welcome'  })
 notification.delivered? # => false
 notification.status     # => 'pending'
+```
 
+Delivering it
+
+```Ruby
 notification.deliver!   # deliver the message
-# this will trigger the Gossiper::Mailer.mail_for(notification).deliver!
-# whitch will change the notification status and delivery date
-# you can also use the "bengless" deliver method
 
 notification.delivered?   # => true
 notification.status       # => 'delivered'
 notification.delivered_at # => Just now
 ```
 
-### A little about the internals
+Also, you could delivery a notification this way:
 
 ```ruby
 email = Gossiper::Mailer.notification_for(notification)
@@ -79,7 +85,7 @@ mail_settings.instance_variables # Hash
 mail_settings.attachments # Array of files
 ```
 
-### Customizing the notification kind configuration
+#### Creating custom configuration
 
 If you want to create a custom configuration for the kind ```user_welcome``` all you need to do is
 to create a class like follows:
@@ -95,16 +101,15 @@ end
 
 Do not botther manually creating notifications though. See the available generators.
 
-### Generators
 You can generate a new type of message by running the following command:
 
     $ rails generate gossiper:notification_type invoice_available
 
 That will create the following files:
 
-- app/models/notifications/invoice_available_notification.rb
-- spec/models/notifications/invoice_available_notification_spec.rb
-- app/notifications/invoice_available.html.erb
+- ```app/models/notifications/invoice_available_notification.rb```
+- ```spec/models/notifications/invoice_available_notification_spec.rb```
+- ```app/notifications/invoice_available.html.erb```
 
 
 ## Configuration
@@ -128,7 +133,17 @@ end
 ```
 
 ## I18n (Localization, internacionalization)
-TODO: write documentation
+You can internationalize titles by editing the ```config/gossiper.{locale}.yml``` file, as follows:
+
+```yaml
+pt-BR:
+  gossiper:
+    notifications:
+      user_welcome:
+        subject: Bem vindo!
+      invoice_available:
+        subject: Sua fatura já está disponível! (yay)
+```
 
 
 ## Managing the notifications
@@ -138,6 +153,7 @@ Gossiper provides a rails engine that you can mount in order to manage notificat
 You can view, delete and resend notifications.
 
 ### Mounting the engine
+
 ```ruby
 mount Gossiper::Engine, at: 'notifications'
 ```
@@ -148,8 +164,11 @@ Now all you need is to go to /notifications path in your application.
 The url is publicly available by default.
 
 ## TODO
-- Everything, according to the especification above, except by the notification model, which is ready.
-- Provide a way of controlling the access to the mounted engine
+- Generator
+- Configuration
+- Internationalizationfile on rails g gossiper:install
+- The notification management engine
+- Access Control in the engine
 
 ## Authors
 - [Marcelo Jacobus](https://github.com/mjacobus)
