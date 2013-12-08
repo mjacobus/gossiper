@@ -1,4 +1,3 @@
-<%- test_folder = defined?(RSpec) ? 'rspec' : 'test' -%>
 Gossiper.configure do |config|
   # Change the default user class
   configure.default_user_class = 'User'
@@ -10,7 +9,7 @@ Gossiper.configure do |config|
   config.notification_root_folder = Rails.root.join('app/models')
 
   # the notifications test folder
-  config.notification_test_folder = Rails.root.join("<%= test_folder %>", "models")
+  config.notification_test_folder = Rails.root.join("rspec", "models")
 
   config.authorize_with do |controller|
     # Example:

@@ -1,0 +1,6 @@
+en:
+  gossiper:
+    notifications:
+      # Example
+      user_welcome:
+        subject: Welcome!

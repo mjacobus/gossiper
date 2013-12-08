@@ -115,21 +115,6 @@ That will create the following files:
 ## Configuration
 
 You can customize gossiper behavior by editing the ```config/initializer/gossiper.rb```
-```ruby
-Gossiper.configure do |config|
-  # change the default class of the configurations
-  config.default_delivery_base_class = 'Gossiper::EmailConfig'
-
-  # Change the default user class
-  configure.default_user_class = 'User'
-
-  # change the notification namespace
-  config.notification_namespace = 'Notifications'
-
-  # change the path where the notifications should be placed
-  config.notifications_root_folder = Rails.root.join('app/models/notifications')
-end
-```
 
 ## I18n (Localization, internacionalization)
 
@@ -177,7 +162,6 @@ end
 
 ## TODO
 
-- Configuration
 - The notification management engine
 - Access Control in the engine
 

@@ -128,10 +128,17 @@ describe Gossiper::Notification, "#user=" do
 end
 
 describe Gossiper::Notification, "#user_class" do
-  it "defaults to User" do
-    expect { subject.user_class = 'DummyUser' }.to change {
-      subject.user_class
-    }.from('User').to('DummyUser')
+  it "defaults to the configured class" do
+    Gossiper.configuration.default_notification_user_class = 'User'
+    expect(subject.user_class).to eq('User')
+
+    Gossiper.configuration.default_notification_user_class = 'AnotherClass'
+    expect(subject.user_class).to eq('AnotherClass')
+  end
+
+  it "can be manually changed" do
+    subject.user_class = 'AnotherClass'
+    expect(subject.user_class).to eq('AnotherClass')
   end
 end
 

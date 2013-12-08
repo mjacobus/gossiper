@@ -15,7 +15,7 @@ module Gossiper
     end
 
     def user_class
-      read_attribute(:user_class).presence || 'User'
+      read_attribute(:user_class).presence || Gossiper.configuration.default_notification_user_class
     end
 
     def status
