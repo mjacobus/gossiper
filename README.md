@@ -2,6 +2,7 @@
 
 Helps to manage the user notification process.
 
+[![Build Status](https://travis-ci.org/mjacobus/gossiper.png?branch=master)](https://travis-ci.org/mjacobus/gossiper)
 [![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 
 **Important**
