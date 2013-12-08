@@ -1,0 +1,8 @@
+Description:
+    Generates a notification type configuration
+
+Example:
+    rails generate notification_type user_welcome
+
+    This will create:
+        app/models/notifications/user_welcome_notification

@@ -177,9 +177,7 @@ end
 
 ## TODO
 
-- Generator
 - Configuration
-- Internationalizationfile on rails g gossiper:install
 - The notification management engine
 - Access Control in the engine
 
