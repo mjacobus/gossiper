@@ -7,6 +7,10 @@ module Gossiper
       @user         = notification.user
     end
 
+    def from
+      config.default_from
+    end
+
     def to
       if user.respond_to?(:name)
         ["#{user.name} <#{user.email}>"]
@@ -15,18 +19,12 @@ module Gossiper
       end
     end
 
-    # TODO: Make configuration for default bcc
     def bcc
-      []
+      config.default_bcc
     end
 
-    # TODO: Make configuration for default from
-    def from
-    end
-
-    # TODO: Make configuration for default cc
     def cc
-      []
+      config.default_cc
     end
 
     def template_name
@@ -48,5 +46,10 @@ module Gossiper
     def instance_variables
       {}
     end
+
+    private
+      def config
+        Gossiper.configuration
+      end
   end
 end

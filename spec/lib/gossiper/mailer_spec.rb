@@ -25,6 +25,7 @@ describe Gossiper::Mailer do
     its(:to)                 { should eq(config.to) }
     its(:cc)                 { should eq(config.cc) }
     its(:bcc)                { should eq(config.bcc) }
+    its(:from)               { should eq([config.from]) }
 
     it "sets attachments correctly" do
       string = subject.attachments.first.to_s

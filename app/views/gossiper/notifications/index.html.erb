@@ -1,0 +1,31 @@
+<h1><%= Gossiper::Notification.model_name.human.pluralize %></h1>
+
+<table>
+  <tr>
+    <th><%= t('.kind') %></th>
+    <th><%= t('.email') %></th>
+    <th><%= t('.delivered_at') %></th>
+    <th><%= t('.status') %></th>
+    <th><%= t('.read') %></th>
+  </tr>
+  <% @notifications.each do |notification| %>
+    <% decorator = Gossiper::NotificationDecorator.new(notification) %>
+    <tr>
+      <td><%= decorator.kind %></td>
+      <td><%= decorator.user.email %></td>
+      <td><%= decorator.delivered_at %></td>
+      <td><%= decorator.status %></td>
+      <td><%= decorator.read? %></td>
+      <td class="actions">
+        <%= link_to(
+          t('.send', default: 'Deliver'),
+          deliver_notification_path(notification),
+          data: {
+            confirm: t('.confirm_delivery', default: 'Are you sure?'),
+            method: :post,
+          }
+        ) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

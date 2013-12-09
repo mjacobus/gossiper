@@ -2,6 +2,7 @@ require "gossiper/engine"
 require "gossiper/email_config"
 require "gossiper/mailer"
 require "gossiper/configuration"
+require "gossiper/notification_decorator"
 
 module Gossiper
 
@@ -10,7 +11,7 @@ module Gossiper
       @@_config ||= Configuration.new
     end
 
-    def config
+    def configure
       yield configuration
     end
   end

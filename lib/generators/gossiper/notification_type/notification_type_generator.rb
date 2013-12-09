@@ -20,4 +20,7 @@ class Gossiper::NotificationTypeGenerator < Rails::Generators::NamedBase
       "#{singular_name}_notification_#{test_sufix}.rb"
     )
   end
+
+  def create_template
+  end
 end

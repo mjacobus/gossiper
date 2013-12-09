@@ -13,10 +13,13 @@ module Gossiper
       end
     end
 
-    attribute :default_notification_user_class
-    attribute :default_notification_config_class
     attribute :notifications_root_folder
     attribute :notifications_test_folder
+    attribute :default_notification_user_class
+    attribute :default_notification_config_class
+    attribute :default_from
+    attribute :default_cc
+    attribute :default_bcc
 
     def authorize_with(&block)
       if block_given?

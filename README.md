@@ -157,10 +157,23 @@ You change the configuration file like follows:
 
 ```ruby
 Gossiper.configure do |config|
-  config.authorize_with do |controller|
+
+  # The passed block is run in the controller context
+  config.authorize_with do
     unless current_user.is_admin?
       redirect_to root_path, notice: 'Get out!'
     end
+  end
+end
+```
+
+You can also overrite the gossiper_authorization method, like follows
+
+```ruby
+# app/controllers/application.rb
+class ApplicationController < ActionController::Base
+  def gossiper_authorization
+    raise AccessDenied unless current_user.is_admin?
   end
 end
 ```
@@ -169,7 +182,6 @@ end
 ## TODO
 
 - The notification management engine
-- Access Control in the engine
 
 ## Authors
 

@@ -19,7 +19,7 @@ describe Gossiper, ".config" do
     configuration = Gossiper.configuration
     configuration.should_receive(:respond_to?).with(:method)
 
-    config = subject.config do |config|
+    config = subject.configure do |config|
       config.respond_to?(:method)
     end
   end

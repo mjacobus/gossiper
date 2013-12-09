@@ -32,6 +32,20 @@ describe Gossiper::Configuration, "#test_folder" do
 end
 
 describe Gossiper::Configuration, "#authorize_with" do
+  let(:controller) do
+    class DummyController; def redirect_to(page); end; end
+    DummyController.new
+  end
+
+  it "executes the given block within the controller context" do
+    controller.should_receive(:redirect_to).with(:page)
+    subject.authorize_with do
+      redirect_to(:page)
+    end
+
+    controller.instance_eval &subject.authorize_with
+  end
+
   it "actions on the block" do
     controller = double(:controller)
     controller.should_receive(:test)

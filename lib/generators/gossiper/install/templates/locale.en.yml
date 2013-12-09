@@ -1,6 +1,10 @@
 en:
   gossiper:
     notifications:
+      status:
+        delivered: Delivered
+        pending: Pending
       # Example
       user_welcome:
         subject: Welcome!
+        title: User Registration

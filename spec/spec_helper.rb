@@ -30,10 +30,4 @@ RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.filter_run focus: true
   config.run_all_when_everything_filtered = true
-
-  # for getting the routes to work on the controllers and routing tests
-  # config.before(:each, type: :controller) { @routes = Gossiper::Engine.routes  }
-  # config.before(:each, type: :routing)    { @routes = Gossiper::Engine.routes  }
-  # config.before(:each, type: :requests)   { @routes = Gossiper::Engine.routes  }
-
 end
