@@ -14,3 +14,8 @@ gemfile:
 before_script:
   - mysql -e 'create database Gossiper_test'
   - psql -c 'create database Gossiper_test' -U postgres
+notifications:
+  email:
+    on_failure: change
+branches:
+  - master
