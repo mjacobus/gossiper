@@ -31,8 +31,10 @@ module Gossiper
         klass = "Notifications::#{notification.kind.classify}Notification"
         klass.constantize.new(notification)
       rescue NameError
-        Gossiper::EmailConfig.new(notification)
+        klass = Gossiper.configuration.default_notification_config_class
+        klass.constantize.new(notification)
       end
+
     end
   end
 end
