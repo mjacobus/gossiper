@@ -114,8 +114,10 @@ You can generate a new type of message by running the following command:
 That will create the following files:
 
 - ```app/models/notifications/invoice_available_notification.rb```
+- ```app/views/notifications/invoice_available.html.erb```
 - ```spec/models/notifications/invoice_available_notification_spec.rb```
-- ```app/notifications/invoice_available.html.erb```
+or
+- ```test/models/notifications/invoice_available_notification_test.rb```
 
 
 ## Configuration

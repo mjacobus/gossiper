@@ -5,4 +5,6 @@ Example:
     rails generate notification_type user_welcome
 
     This will create:
-        app/models/notifications/user_welcome_notification
+        app/models/notifications/user_welcome_notification.rb
+        app/views/notifications/user_welcome_notification.html.erb
+        spec/models/notifications/user_welcome_notification_spec.rb

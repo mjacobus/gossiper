@@ -15,6 +15,7 @@ module Gossiper
 
     attribute :notifications_root_folder
     attribute :notifications_test_folder
+    attribute :notifications_template_folder
     attribute :default_notification_user_class
     attribute :default_notification_config_class
     attribute :default_from

@@ -17,6 +17,9 @@ Gossiper.configure do |config|
   # change the path where the notifications should be placed
   config.notifications_root_folder = Rails.root.join('app/models')
 
+  # the notifications templates
+  config.notifications_template_folder = Rails.root.join("app/views")
+
   # the notifications test folder
   config.notifications_test_folder = Rails.root.join("rspec", "models")
 

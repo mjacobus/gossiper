@@ -33,6 +33,10 @@ describe Gossiper::Mailer do
       expect(string).to include('Content-Type: image/jpeg')
     end
 
+    it "assigns the notification decorator to the template" do
+      expect(subject.body.encoded).to match("Decorator: Gossiper::NotificationDecorator")
+    end
+
     it "assigns the correct vars to the correct template" do
       expect(subject.body.encoded).to match("template_name: #{config.template_name}")
       expect(subject.body.encoded).to match("template_path: #{config.template_path}")

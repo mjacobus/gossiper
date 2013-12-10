@@ -22,5 +22,11 @@ class Gossiper::NotificationTypeGenerator < Rails::Generators::NamedBase
   end
 
   def create_template
+    template 'notification_type_template.rb', File.join(
+      Gossiper.configuration.notifications_template_folder.to_s,
+      'notifications',
+      class_path,
+      "#{singular_name}_notification.html.erb"
+    )
   end
 end

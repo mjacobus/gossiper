@@ -8,8 +8,7 @@ module Gossiper
         attachments[filename] = file
       end
 
-      @notification = notification
-      @notification_decorator = NotificationDecorator.new(notification)
+      @notification = NotificationDecorator.new(notification)
 
       config.instance_variables.each do |name, value|
         instance_variable_set("@#{name}", value)

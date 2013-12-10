@@ -24,10 +24,17 @@ describe Gossiper::Configuration, "#notifications_root_folder" do
   end
 end
 
-describe Gossiper::Configuration, "#test_folder" do
+describe Gossiper::Configuration, "#notifications_test_folder" do
   it "can be changed" do
     subject.notifications_test_folder = 'test_folder'
     expect(subject.notifications_test_folder).to eq('test_folder')
+  end
+end
+
+describe Gossiper::Configuration, "#notifications_template_folder" do
+  it "can be changed" do
+    subject.notifications_template_folder = 'test_folder'
+    expect(subject.notifications_template_folder).to eq('test_folder')
   end
 end
 
