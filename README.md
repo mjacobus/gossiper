@@ -8,10 +8,6 @@ Helps to manage the user notification process.
 [![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 [![Dependency Status](https://gemnasium.com/mjacobus/gossiper.png)](https://gemnasium.com/mjacobus/gossiper)
 
-**Important**
-
-Gossiper is not fully implemented yet. See the "TODO" section so you know what parts of the following instructions are in fact a specification of what need to be done. If you like the idea, feel free to contribute.
-
 ## Instalation
 
 Add this line to your application's Gemfile:
@@ -183,7 +179,7 @@ end
 
 ## TODO
 
-- The notification management engine
+- [Next features](https://github.com/mjacobus/gossiper/issues?labels=enhancement&page=1&state=open)
 
 ## Authors
 
@@ -197,3 +193,6 @@ end
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+** Do not forget to write tests**
+
