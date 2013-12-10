@@ -6,6 +6,6 @@ class Gossiper::InstallGenerator < Rails::Generators::Base
   end
 
   def copy_locale
-    template "locale.en.yml", "config/locale/gossiper.en.yml"
+    template "locale.en.yml", "config/locales/gossiper.en.yml"
   end
 end

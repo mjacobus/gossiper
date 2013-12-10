@@ -1,12 +1,17 @@
 <h1><%= Gossiper::Notification.model_name.human.pluralize %></h1>
 
-<table>
+<% if notice.present? %>
+<div class="alert alert-success"><%= notice %></div>
+<% end %>
+
+<table class="table table-striped table-bordered">
   <tr>
     <th><%= t('.kind') %></th>
     <th><%= t('.email') %></th>
     <th><%= t('.delivered_at') %></th>
     <th><%= t('.status') %></th>
     <th><%= t('.read') %></th>
+    <th><%= t('.actions') %></th>
   </tr>
   <% @notifications.each do |notification| %>
     <% decorator = Gossiper::NotificationDecorator.new(notification) %>
@@ -18,14 +23,18 @@
       <td><%= decorator.read? %></td>
       <td class="actions">
         <%= link_to(
-          t('.send', default: 'Deliver'),
+          t('.deliver', default: 'Deliver'),
           deliver_notification_path(notification),
           data: {
-            confirm: t('.confirm_delivery', default: 'Are you sure?'),
+            confirm: t('.confirm_delivery', default: t('gossiper.notifications.confirm_delivery')),
             method: :post,
-          }
+          },
+          class: 'btn pull-right'
         ) %>
+        <%= link_to(t('.show', default: t('gossiper.notifications.show')), notification, class: 'btn pull-right') %>
       </td>
     </tr>
   <% end %>
 </table>
+
+<%= paginate(@notifications, theme: :gossiper) %>

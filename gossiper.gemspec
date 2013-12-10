@@ -15,6 +15,14 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
+  # # twitter bootstrap dependencies
+  # s.add_dependency 'therubyracer'
+  # s.add_dependency 'less-rails'
+  # s.add_dependency 'twitter-bootstrap-rails'
+
+  # # pagination
+  # s.add_dependency 'kaminari'
+
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "rspec-rails"

@@ -5,7 +5,7 @@ module Gossiper
     respond_to :html
 
     def index
-      @notifications = Notification.all
+      @notifications = Notification.order('id desc').page(page).per(per_page)
       respond_with(@notifications)
     end
 
@@ -16,7 +16,7 @@ module Gossiper
     def deliver
       notification.deliver!
       respond_with(notification) do |format|
-        format.html { redirect_to :notifications }
+        format.html { redirect_to :notifications, notice: t('.delivered')  }
       end
     end
 

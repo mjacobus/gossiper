@@ -7,3 +7,10 @@ gemspec
 
 gem 'rails', '~> 4.0.2'
 gem 'jquery-rails'
+
+# twitter bootstrap requirements
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
+gem 'kaminari'

@@ -38,17 +38,32 @@ module Gossiper
     def email
       notification.user.email
     end
+    alias_method :to, :email
 
     def delivered_at
-      if notification.delivered_at.present?
-        I18n.l(notification.delivered_at, format: :short)
-      end
+      decorate_date(notification.delivered_at)
+    end
+
+    def created_at
+      decorate_date(notification.created_at)
+    end
+
+    def updated_at
+      decorate_date(notification.updated_at)
+    end
+
+    def email_object
+      @email_object ||= Mailer.mail_for(notification)
     end
 
     private
 
       def t(*args)
         I18n.t(*args)
+      end
+
+      def decorate_date(date)
+        I18n.l(date, format: :short) if date
       end
 
   end
