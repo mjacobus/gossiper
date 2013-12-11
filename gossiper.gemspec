@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Gossiper::VERSION
   s.authors     = ["Marcelo Jacobus"]
   s.email       = ["marcelo.jacobus@gmail.com"]
-  s.homepage    = "https://github.com/mjacobus/gossiper"
+  s.homepage    = "https://github.com/mjacobus/gossiper-engine"
   s.summary     = "It eases the creation of messages for the users"
   s.description = "Eases the creation of email messages as well as user notification systems"
   s.license     = "MIT"
