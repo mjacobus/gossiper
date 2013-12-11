@@ -5,7 +5,7 @@ Helps to manage the user notification process.
 [![Build Status](https://travis-ci.org/mjacobus/gossiper-engine.png?branch=master)](https://travis-ci.org/mjacobus/gossiper-engine)
 [![Coverage Status](https://coveralls.io/repos/mjacobus/gossiper-engine/badge.png)](https://coveralls.io/r/mjacobus/gossiper-engine)
 [![Code Climate](https://codeclimate.com/github/mjacobus/gossiper-engine.png)](https://codeclimate.com/github/mjacobus/gossiper-engine)
-[![Gem Version](https://badge.fury.io/rb/gossiper-engine.png)](http://badge.fury.io/rb/gossiper-engine)
+[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 [![Dependency Status](https://gemnasium.com/mjacobus/gossiper-engine.png)](https://gemnasium.com/mjacobus/gossiper-engine)
 
 ## Instalation
