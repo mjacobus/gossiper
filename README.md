@@ -2,11 +2,11 @@
 
 Helps to manage the user notification process.
 
-[![Build Status](https://travis-ci.org/mjacobus/gossiper-engine.png?branch=master)](https://travis-ci.org/mjacobus/gossiper-engine)
-[![Coverage Status](https://coveralls.io/repos/mjacobus/gossiper-engine/badge.png)](https://coveralls.io/r/mjacobus/gossiper-engine)
-[![Code Climate](https://codeclimate.com/github/mjacobus/gossiper-engine.png)](https://codeclimate.com/github/mjacobus/gossiper-engine)
+[![Build Status](https://travis-ci.org/mjacobus/gossiper.png?branch=master)](https://travis-ci.org/mjacobus/gossiper)
+[![Coverage Status](https://coveralls.io/repos/mjacobus/gossiper/badge.png)](https://coveralls.io/r/mjacobus/gossiper)
+[![Code Climate](https://codeclimate.com/github/mjacobus/gossiper.png)](https://codeclimate.com/github/mjacobus/gossiper)
 [![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
-[![Dependency Status](https://gemnasium.com/mjacobus/gossiper-engine.png)](https://gemnasium.com/mjacobus/gossiper-engine)
+[![Dependency Status](https://gemnasium.com/mjacobus/gossiper.png)](https://gemnasium.com/mjacobus/gossiper)
 
 ## Instalation
 
@@ -179,11 +179,11 @@ end
 
 ## TODO
 
-- [Next features](https://github.com/mjacobus/gossiper-engine/issues?labels=enhancement&page=1&state=open)
+- [Next features](https://github.com/mjacobus/gossiper/issues?labels=enhancement&page=1&state=open)
 
 ## Authors
 
-- [Marcelo Jacobus](https://github.com/mjacobus-engine)
+- [Marcelo Jacobus](https://github.com/mjacobus)
 
 
 ## Contributing
