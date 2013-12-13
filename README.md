@@ -22,7 +22,7 @@ And then execute:
 This will create the following files:
 
 - ```app/initializers/gossiper.rb```
-- ```config/locales/gossiper.en.yaml```
+- ```config/locales/gossiper.en.yml```
 
 ## Usage
 
