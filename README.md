@@ -2,10 +2,11 @@
 
 Helps to manage the user notification process.
 
+[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
+[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 [![Build Status](https://travis-ci.org/mjacobus/gossiper.png?branch=master)](https://travis-ci.org/mjacobus/gossiper)
 [![Coverage Status](https://coveralls.io/repos/mjacobus/gossiper/badge.png)](https://coveralls.io/r/mjacobus/gossiper)
 [![Code Climate](https://codeclimate.com/github/mjacobus/gossiper.png)](https://codeclimate.com/github/mjacobus/gossiper)
-[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 [![Dependency Status](https://gemnasium.com/mjacobus/gossiper.png)](https://gemnasium.com/mjacobus/gossiper)
 
 ## Instalation
