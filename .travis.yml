@@ -18,4 +18,5 @@ notifications:
   email:
     on_failure: change
 branches:
-  - master
+  only:
+    - master
