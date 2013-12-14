@@ -13,7 +13,7 @@ class Gossiper::NotificationTypeGenerator < Rails::Generators::NamedBase
   def create_test_file
     test_sufix = defined?(RSpec) ? 'spec' : 'test'
 
-    template 'notification_type_test.rb', File.join(
+    template "notification_type_#{test_sufix}.rb", File.join(
       Gossiper.configuration.notifications_test_folder.to_s,
       'notifications',
       class_path,
