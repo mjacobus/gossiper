@@ -13,17 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20131214081503) do
 
-  create_table "gossiper_notifications", force: true do |t|
-    t.integer  "user_id"
-    t.string   "user_class"
-    t.string   "kind"
-    t.string   "status"
-    t.datetime "delivered_at"
-    t.boolean  "read"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "data"
-  end
+# Could not dump table "gossiper_notifications" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "name"
