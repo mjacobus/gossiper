@@ -9,7 +9,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec spec/
 gemfile:
-  - gemfiles/Gemfile.rails-3.2.x
+  # - gemfiles/Gemfile.rails-3.2.x
   - Gemfile
 before_script:
   - mysql -e 'create database Gossiper_test'
