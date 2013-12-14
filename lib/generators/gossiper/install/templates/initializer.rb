@@ -1,4 +1,4 @@
-<%- test_folder = defined?(RSpec) ? 'rspec' : 'test' -%>
+<%- test_folder = defined?(RSpec) ? 'spec' : 'test' -%>
 Gossiper.configure do |config|
   # Change the default user class
   config.default_notification_user_class = 'User'
