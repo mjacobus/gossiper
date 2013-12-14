@@ -18,6 +18,8 @@ And then execute:
 
     $ bundle
     $ rails g gossiper:install
+    $ rails g gossiper:install:migrations
+    $ rake db:migrate
 
 This will create the following files:
 
