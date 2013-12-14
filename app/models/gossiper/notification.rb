@@ -1,6 +1,9 @@
 module Gossiper
   class Notification < ActiveRecord::Base
+
     STATUSES = %w(pending delivered)
+
+    serialize :data, JSON
 
     validates :kind, presence: true
 
@@ -20,6 +23,10 @@ module Gossiper
 
     def status
       read_attribute(:status).presence || STATUSES.first
+    end
+
+    def data
+      read_attribute(:data).presence || {}
     end
 
     def deliver

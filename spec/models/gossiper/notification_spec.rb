@@ -6,6 +6,23 @@ class DummyUser < Struct.new(:id)
   end
 end
 
+describe Gossiper::Notification, "#data" do
+  it "defaults to empty hash" do
+    expect(subject.data).to eq({})
+  end
+
+  it "serializes data as json" do
+    user = stub_model(User, id: 1)
+    subject = described_class.create!({ user: user, kind: 'some_kind' })
+    data = {'some_data' => 'some_value' }
+    subject.data = data
+    expect(subject.data).to be(data)
+    subject.save!
+    subject.reload
+    expect(subject.data).to eq(data)
+  end
+end
+
 describe Gossiper::Notification, "#deliver" do
   it "calls deliver on the mail object and updates the delivery date" do
     mail = double(:mail)

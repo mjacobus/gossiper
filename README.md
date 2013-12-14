@@ -3,10 +3,10 @@
 Helps to manage the user notification process.
 
 [![Build Status](https://travis-ci.org/mjacobus/gossiper.png?branch=master)](https://travis-ci.org/mjacobus/gossiper)
-[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 [![Coverage Status](https://coveralls.io/repos/mjacobus/gossiper/badge.png)](https://coveralls.io/r/mjacobus/gossiper)
 [![Code Climate](https://codeclimate.com/github/mjacobus/gossiper.png)](https://codeclimate.com/github/mjacobus/gossiper)
 [![Dependency Status](https://gemnasium.com/mjacobus/gossiper.png)](https://gemnasium.com/mjacobus/gossiper)
+[![Gem Version](https://badge.fury.io/rb/gossiper.png)](http://badge.fury.io/rb/gossiper)
 
 ## Instalation
 
@@ -32,6 +32,15 @@ This will create the following files:
 notification = Gossiper::Notification.create({ user: user, kind: 'user_welcome'  })
 notification.delivered? # => false
 notification.status     # => 'pending'
+```
+
+### Adding aditional data to the notification
+
+Notification has a field called data, prepared for storing aditinal data. It will be serialized as Json.
+
+```ruby
+notification.data # {}
+notification.data = { 'some' => 'data' }
 ```
 
 ### Delivering notifications
