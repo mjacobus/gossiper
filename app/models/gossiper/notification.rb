@@ -6,20 +6,7 @@ module Gossiper
     serialize :data, JSON
 
     validates :kind, presence: true
-
-    def user=(user)
-      @user           = user
-      self.user_class = user.class.to_s
-      self.user_id    = user.id
-    end
-
-    def user
-      @user ||= user_class.constantize.find(user_id)
-    end
-
-    def user_class
-      read_attribute(:user_class).presence || Gossiper.configuration.default_notification_user_class
-    end
+    belongs_to :user, polymorphic: true
 
     def status
       read_attribute(:status).presence || STATUSES.first

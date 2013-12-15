@@ -103,59 +103,17 @@ describe Gossiper::Notification, "#status" do
 end
 
 describe Gossiper::Notification, "#user" do
-  before do
-    subject.user_class = 'DummyUser'
-    subject.user_id    = 1
-  end
+  it { should belong_to(:user) }
 
-  it "returns the user that owns the notification" do
-    expect(subject.user).to be_a(DummyUser)
-    expect(subject.user.id).to be(1)
-  end
+  it "os a polymorphic association" do
+    admin = AdminUser.create!(email: 'admin@email.com', name: 'Admin')
+    user  = AdminUser.create!(email: 'user@email.com', name: 'User')
 
-  it "memoizes the value" do
-    expect(subject.user).to be(subject.user)
-  end
-end
+    admin_notification = Gossiper::Notification.create!(user: admin, kind: 'any')
+    expect(admin_notification.user).to eq(admin)
 
-describe Gossiper::Notification, "#user=" do
-  before do
-    subject.user_class = 'DummyClass'
-    subject.user_id    = 1
-    subject.user       = user
-  end
-
-  let(:user) { stub_model(User, id: 2) }
-
-  it "sets the user" do
-    expect(subject.user).to be(user)
-  end
-
-  it "changes the user_class" do
-    expect(subject.user_class).to eq('User')
-  end
-
-  it "changes the user id" do
-    expect(subject.user_id).to eq(2)
-  end
-
-  it "memoizes the value" do
-    expect(subject.user).to be(subject.user)
-  end
-end
-
-describe Gossiper::Notification, "#user_class" do
-  it "defaults to the configured class" do
-    Gossiper.configuration.default_notification_user_class = 'User'
-    expect(subject.user_class).to eq('User')
-
-    Gossiper.configuration.default_notification_user_class = 'AnotherClass'
-    expect(subject.user_class).to eq('AnotherClass')
-  end
-
-  it "can be manually changed" do
-    subject.user_class = 'AnotherClass'
-    expect(subject.user_class).to eq('AnotherClass')
+    user_notification = Gossiper::Notification.create!(user: user, kind: 'any')
+    expect(user_notification.user).to eq(user)
   end
 end
 
@@ -166,32 +124,5 @@ describe Gossiper::Notification, "#update_delivered_at!" do
     subject.should_receive(:delivered_at=).with(now)
     subject.should_receive(:save!)
     subject.send(:update_delivered_at!)
-  end
-end
-
-describe Gossiper::Notification, "#user_id" do
-  it { should respond_to(:user_id) }
-  it { should respond_to(:user_id=) }
-end
-
-describe Gossiper::Notification, "#config" do
-  module Notifications
-    class DummyKindNotification < Gossiper::EmailConfig
-    end
-  end
-
-  def resolve_class(notification, klass)
-    expect(notification.config.class).to be(klass)
-  end
-
-  it "resolves standard notifications config" do
-    subject.kind = 'no_kind'
-    subject.user_class = nil
-    resolve_class(subject, Gossiper::EmailConfig)
-  end
-
-  it "resolves custom notification config" do
-    subject.kind = 'dummy_kind'
-    resolve_class(subject, Notifications::DummyKindNotification)
   end
 end
