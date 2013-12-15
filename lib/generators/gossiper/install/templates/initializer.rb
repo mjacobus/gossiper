@@ -6,8 +6,12 @@ Gossiper.configure do |config|
   # change the default class of the configurations
   config.default_notification_config_class = 'Gossiper::EmailConfig'
 
-  # email the email sender
+  # the email sender
   config.default_from = 'from@example.com'
+
+  # the default reply to
+  # when not present, it defaults to the same email addres ass the default_from
+  # config.default_reply_to = 'reply@example.com'
 
   # The list of emails to send copies to
   # config.default_cc   = ['user@example.com']

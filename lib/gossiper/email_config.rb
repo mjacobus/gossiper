@@ -11,6 +11,10 @@ module Gossiper
       config.default_from
     end
 
+    def reply_to
+      config.default_reply_to.presence || config.default_from
+    end
+
     def to
       if user.respond_to?(:name)
         ["#{user.name} <#{user.email}>"]

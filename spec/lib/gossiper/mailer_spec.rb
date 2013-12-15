@@ -9,6 +9,15 @@ describe Gossiper::Mailer do
   let(:user)         { User.create!(name: 'User Name', email: 'user@email.com') }
   let(:notification) { Gossiper::Notification.create(user: user, kind: 'dummy') }
 
+  before do
+    Gossiper.configure do |c|
+      c.default_from     = 'from@email.com'
+      c.default_cc       = 'cc@email.com'
+      c.default_bcc      = 'bcc@email.com'
+      c.default_reply_to = 'reply@email.com'
+    end
+  end
+
   it "inherits from ActionMailer::Base" do
     expect(described_class.send(:new)).to be_a(ActionMailer::Base)
   end
@@ -26,6 +35,7 @@ describe Gossiper::Mailer do
     its(:cc)                 { should eq(config.cc) }
     its(:bcc)                { should eq(config.bcc) }
     its(:from)               { should eq([config.from]) }
+    its(:reply_to)           { should eq([config.reply_to]) }
 
     it "sets attachments correctly" do
       string = subject.attachments.first.to_s

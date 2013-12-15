@@ -19,6 +19,7 @@ module Gossiper
     attribute :default_notification_user_class
     attribute :default_notification_config_class
     attribute :default_from
+    attribute :default_reply_to
     attribute :default_cc
     attribute :default_bcc
 

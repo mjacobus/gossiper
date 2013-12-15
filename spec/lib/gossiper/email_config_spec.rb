@@ -3,9 +3,10 @@ require 'spec_helper'
 describe Gossiper::EmailConfig do
   before do
     Gossiper.configure do |config|
-      config.default_from = 'from@email.com'
-      config.default_cc   = ['cc@email.com']
-      config.default_bcc  = ['bcc@email.com']
+      config.default_from     = 'from@email.com'
+      config.default_reply_to = 'replyto@email.com'
+      config.default_cc       = ['cc@email.com']
+      config.default_bcc      = ['bcc@email.com']
     end
   end
   let(:config)        { Gossiper.configuration }
@@ -23,6 +24,17 @@ describe Gossiper::EmailConfig do
   its(:template_name) { should eq('user_welcome_notification') }
   its(:template_path) { should eq('notifications') }
   its(:instance_variables){ should eq({}) }
+
+  describe "#reply_to" do
+    context "when there is a reply to set" do
+      its(:reply_to) { should eq(config.default_reply_to) }
+    end
+
+    context "when no default reply to is set" do
+      before { config.default_reply_to = nil }
+      its(:reply_to) { should eq(config.default_from) }
+    end
+  end
 
   describe "#to" do
     context "when user has a name" do

@@ -15,10 +15,11 @@ module Gossiper
       end
 
       mail(
-        from:    config.from,
-        to:      config.to,
-        cc:      config.cc,
-        bcc:     config.bcc,
+        from:     config.from,
+        reply_to: config.reply_to,
+        to:       config.to,
+        cc:       config.cc,
+        bcc:      config.bcc,
         subject: config.subject,
         template_name: config.template_name,
         template_path: config.template_path

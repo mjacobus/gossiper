@@ -38,6 +38,38 @@ describe Gossiper::Configuration, "#notifications_template_folder" do
   end
 end
 
+describe Gossiper::Configuration, "#default_from" do
+  it "holds the default from" do
+    expect do
+      subject.default_from = 'from@email.com'
+    end.to change(subject, :default_from).from(nil).to('from@email.com')
+  end
+end
+
+describe Gossiper::Configuration, "#default_reply_to" do
+  it "holds the default reply_to" do
+    expect do
+      subject.default_reply_to = 'reply_to@email.com'
+    end.to change(subject, :default_reply_to).from(nil).to('reply_to@email.com')
+  end
+end
+
+describe Gossiper::Configuration, "#default_cc" do
+  it "holds the default cc" do
+    expect do
+      subject.default_cc = 'cc@email.com'
+    end.to change(subject, :default_cc).from(nil).to('cc@email.com')
+  end
+end
+
+describe Gossiper::Configuration, "#default_bcc" do
+  it "holds the default bcc" do
+    expect do
+      subject.default_bcc = 'bcc@email.com'
+    end.to change(subject, :default_bcc).from(nil).to('bcc@email.com')
+  end
+end
+
 describe Gossiper::Configuration, "#authorize_with" do
   let(:controller) do
     class DummyController; def redirect_to(page); end; end
