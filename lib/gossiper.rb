@@ -1,5 +1,6 @@
 require "gossiper/engine"
 require "gossiper/concerns/models/notification"
+require "gossiper/concerns/decorators/notification"
 require "gossiper/email_config"
 require "gossiper/mailer"
 require "gossiper/configuration"
