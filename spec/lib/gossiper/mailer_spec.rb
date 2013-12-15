@@ -57,19 +57,4 @@ describe Gossiper::Mailer do
     end
   end
 
-  describe '#config_for' do
-    def resolve_class(notification, klass)
-      expect(described_class.send(:new).config_for(notification).class.to_s).to eq(klass.to_s)
-    end
-
-    it "resolves standard notifications config" do
-      notification.kind = 'no_kind'
-      resolve_class(notification, Gossiper::EmailConfig)
-    end
-
-    it "resolves custom notification config" do
-      notification.kind = 'dummy_kind'
-      resolve_class(notification, Notifications::DummyKindNotification)
-    end
-  end
 end

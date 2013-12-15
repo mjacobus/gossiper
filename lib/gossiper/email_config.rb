@@ -4,7 +4,7 @@ module Gossiper
 
     def initialize(notification)
       @notification = notification
-      @user         = notification.user
+      @user = notification.user rescue nil
     end
 
     def from

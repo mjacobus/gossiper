@@ -173,3 +173,25 @@ describe Gossiper::Notification, "#user_id" do
   it { should respond_to(:user_id) }
   it { should respond_to(:user_id=) }
 end
+
+describe Gossiper::Notification, "#config" do
+  module Notifications
+    class DummyKindNotification < Gossiper::EmailConfig
+    end
+  end
+
+  def resolve_class(notification, klass)
+    expect(notification.config.class).to be(klass)
+  end
+
+  it "resolves standard notifications config" do
+    subject.kind = 'no_kind'
+    subject.user_class = nil
+    resolve_class(subject, Gossiper::EmailConfig)
+  end
+
+  it "resolves custom notification config" do
+    subject.kind = 'dummy_kind'
+    resolve_class(subject, Notifications::DummyKindNotification)
+  end
+end

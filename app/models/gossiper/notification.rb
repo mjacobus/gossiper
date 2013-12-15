@@ -44,6 +44,16 @@ module Gossiper
       write_attribute(:kind, value)
     end
 
+    def config
+      begin
+        klass = "Notifications::#{kind.classify}Notification"
+        klass.constantize.new(self)
+      rescue NameError
+        klass = Gossiper.configuration.default_notification_config_class
+        klass.constantize.new(self)
+      end
+    end
+
     def method_missing(method, *args, &block)
       STATUSES.each do |status|
         if method.to_s == "#{status}?"

@@ -9,11 +9,12 @@ describe Gossiper::EmailConfig do
       config.default_bcc      = ['bcc@email.com']
     end
   end
+
   let(:config)        { Gossiper.configuration }
+  let(:user)          { double(:user, email: 'user@email.com', name: 'User Name' ) }
+  let(:notification)  { double(:notification, user: user, kind: 'user_welcome', user_class: 'User') }
   subject             { described_class.new(notification) }
 
-  let(:user)          { double(:user, email: 'user@email.com', name: 'User Name') }
-  let(:notification)  { double(:notification, user: user, kind: 'user_welcome') }
   its(:user)          { should be(user) }
   its(:notification)  { should be(notification) }
   its(:from)          { should eq(config.default_from) }

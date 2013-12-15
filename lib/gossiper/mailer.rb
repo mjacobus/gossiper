@@ -2,7 +2,7 @@ module Gossiper
   class Mailer < ActionMailer::Base
 
     def mail_for(notification)
-      config = config_for(notification)
+      config = notification.config
 
       config.attachments.each do |filename, file|
         attachments[filename] = file
@@ -26,15 +26,5 @@ module Gossiper
       )
     end
 
-    def config_for(notification)
-      begin
-        klass = "Notifications::#{notification.kind.classify}Notification"
-        klass.constantize.new(notification)
-      rescue NameError
-        klass = Gossiper.configuration.default_notification_config_class
-        klass.constantize.new(notification)
-      end
-
-    end
   end
 end
