@@ -69,6 +69,30 @@ describe Gossiper::NotificationDecorator do
       expect(subject.subject).to eq('Welcome!')
     end
   end
+
+  # Time fields
+  %w(created_at updated_at).each do |method|
+    describe "##{method}"  do
+      let(:time) { Time.now.utc }
+
+      it "returns localized time" do
+        notification.send("#{method}=", time)
+        expect(subject.send(method)).to eq(I18n.l(time, format: :short))
+      end
+
+      it "returns localized data" do
+        notification.send("#{method}=", time)
+        expect(subject.send(method)).to eq(I18n.l(time, format: :short))
+      end
+    end
+  end
+
+  describe "#email_object" do
+    it "returns the email object for the notification" do
+      Gossiper::Mailer.should_receive(:mail_for).with(notification).and_return('mail')
+      expect(subject.email_object).to eq('mail')
+    end
+  end
 end
 
 describe Gossiper::NotificationDecorator, "#method_missing" do
