@@ -40,7 +40,7 @@ module Gossiper
     end
 
     def subject
-      I18n.t("gossiper.notifications.#{notification.kind}.subject")
+      I18n.t("gossiper.notifications.#{notification.kind}.subject", subject_variables)
     end
 
     def attachments
@@ -48,6 +48,10 @@ module Gossiper
     end
 
     def instance_variables
+      {}
+    end
+
+    def subject_variables
       {}
     end
 

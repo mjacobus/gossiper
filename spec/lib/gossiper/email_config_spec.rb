@@ -20,11 +20,12 @@ describe Gossiper::EmailConfig do
   its(:from)          { should eq(config.default_from) }
   its(:cc)            { should eq(config.default_cc) }
   its(:bcc)           { should eq(config.default_bcc) }
-  its(:subject)       { should eq(I18n.t('gossiper.notifications.user_welcome.subject')) }
   its(:attachments)   { should eq({}) }
   its(:template_name) { should eq('user_welcome_notification') }
   its(:template_path) { should eq('notifications') }
+  its(:subject)       { should eq(I18n.t('gossiper.notifications.user_welcome.subject')) }
   its(:instance_variables){ should eq({}) }
+  its(:subject_variables) { should eq({}) }
 
   describe "#reply_to" do
     context "when there is a reply to set" do
