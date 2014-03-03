@@ -2,6 +2,10 @@ PATH
   remote: .
   specs:
     gossiper (0.3.5)
+      kaminari
+      less-rails
+      therubyracer
+      twitter-bootstrap-rails
 
 GEM
   remote: https://rubygems.org/

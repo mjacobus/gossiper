@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215062501) do
+ActiveRecord::Schema.define(version: 20140303185252) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
@@ -20,8 +20,17 @@ ActiveRecord::Schema.define(version: 20131215062501) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "gossiper_notifications" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "gossiper_notifications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "kind"
+    t.string   "status"
+    t.datetime "delivered_at"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "data"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
