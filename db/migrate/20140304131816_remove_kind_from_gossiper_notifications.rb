@@ -4,7 +4,7 @@ class RemoveKindFromGossiperNotifications < ActiveRecord::Migration
   end
 
   def down
-    add_column :notifications, :type, :string
+    add_column :gossiper_notifications, :kind, :string
   end
 
 end

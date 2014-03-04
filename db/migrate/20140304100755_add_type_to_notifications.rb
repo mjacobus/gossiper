@@ -1,5 +1,5 @@
 class AddTypeToNotifications < ActiveRecord::Migration
   def change
-    add_column :notifications, :type, :string
+    add_column :gossiper_notifications, :type, :string
   end
 end
