@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe Gossiper::NotificationsController do
   render_views
   routes { Gossiper::Engine.routes }
@@ -13,9 +14,8 @@ describe Gossiper::NotificationsController do
   let(:user) { User.create!(name: 'Name', email: 'user@email.com') }
 
   let(:notification) do
-    n      = Gossiper::Notification.new
+    n      = UserNotification.new
     n.user = user
-    n.kind = 'dummy'
     n.save!
     n
   end

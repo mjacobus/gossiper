@@ -2,22 +2,24 @@ require "spec_helper"
 require "faker"
 
 describe Gossiper::NotificationDecorator do
+  before do
+    I18n.locale = :en
+  end
+
   let(:user)         { User.new(email: Faker::Internet.email, name: Faker::Name.name)}
-  let(:notification) { Gossiper::Notification.new(user: user) }
+  let(:notification) { UserNotification.new(user: user) }
   subject            { described_class.new(notification) }
 
   its(:notification) { should eq(notification) }
 
   describe "#kind" do
     it "defaults to the titleized kind" do
-      notification.kind = 'no_kind'
-      expect(subject.kind).to eq('No Kind')
+      I18n.locale = 'pt-BR'
+      expect(subject.kind).to eq('User Notification')
     end
 
     it "returns the human kind name" do
-      pending "it fails, but it works!"
-      notification.kind = 'user_welcome'
-      expect(subject.kind).to eq('User Registration')
+      expect(subject.kind).to eq('The Title')
     end
   end
 
@@ -59,14 +61,12 @@ describe Gossiper::NotificationDecorator do
 
   describe "#subject" do
     it "defaults to the titleized kind" do
-      notification.kind = 'no_kind'
-      expect(subject.subject).to eq('No Kind')
+      I18n.locale = 'pt-BR'
+      expect(subject.subject).to eq('User Notification')
     end
 
     it "returns the human kind name" do
-      pending "it fails, but it works!"
-      notification.kind = 'user_welcome'
-      expect(subject.subject).to eq('Welcome!')
+      expect(subject.subject).to eq('The Subject')
     end
   end
 

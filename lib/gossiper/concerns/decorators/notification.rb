@@ -21,15 +21,15 @@ module Gossiper
         end
 
         def kind
-          t("gossiper.notifications.#{notification.kind}.title",
-            default: notification.kind.titleize
-           )
+          t("gossiper.notifications.#{notification.type.underscore}.title",
+            default: notification.type.titleize
+          )
         end
 
         def subject
-          t("gossiper.notifications.#{notification.kind}.subject",
+          t("gossiper.notifications.#{notification.type.underscore}.subject",
             default: kind
-           )
+          )
         end
 
         def status

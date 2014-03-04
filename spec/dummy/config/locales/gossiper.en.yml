@@ -18,4 +18,7 @@ en:
       hello_user:
         subject: Hello User
         title: User Registration
+      user_notification:
+        subject: The Subject
+        title: The Title
 

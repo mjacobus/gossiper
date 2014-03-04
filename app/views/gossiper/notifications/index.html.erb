@@ -31,7 +31,7 @@
           },
           class: 'btn pull-right'
         ) %>
-        <%= link_to(t('.show', default: t('gossiper.notifications.show')), notification, class: 'btn pull-right') %>
+        <%= link_to(t('.show', default: t('gossiper.notifications.show')), notification_path(notification), class: 'btn pull-right') %>
       </td>
     </tr>
   <% end %>

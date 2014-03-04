@@ -10,7 +10,7 @@ module Gossiper
     end
 
     def show
-      respond_with(notification)
+      respond_with(notification, location: :notifications)
     end
 
     def deliver
