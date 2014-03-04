@@ -3,7 +3,7 @@
 <h1><%= Gossiper::Notification.model_name.human.pluralize %></h1>
 
 <table class="table table-striped table-bordered">
-  <% %w(kind subject to user_class user_id delivered_at status read created_at updated_at).each do |attribute| %>
+  <% %w(kind subject to user_type user_id delivered_at status read created_at updated_at).each do |attribute| %>
     <tr>
       <th class="title"><%= Gossiper::Notification.human_attribute_name(attribute) rescue t(".#{attribute}") %></th>
       <td><%= decorator.send(attribute) %></td>

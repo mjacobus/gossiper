@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Gossiper::NotificationsController do
+  render_views
   routes { Gossiper::Engine.routes }
 
   before do
