@@ -60,17 +60,6 @@ describe Gossiper::Notification, "#delivered_at" do
   it { should respond_to(:delivered_at=) }
 end
 
-describe Gossiper::Notification, "#kind" do
-  it "is required" do
-    subject.should validate_presence_of(:kind)
-  end
-
-  it "underscores kinds" do
-    subject.kind = 'a  kind'
-    expect(subject.kind).to eq('a_kind')
-  end
-end
-
 describe Gossiper::Notification, "#mail" do
   it "returns the email about to be send" do
     Gossiper::Mailer.should_receive(:mail_for).with(subject).and_return('mail')
@@ -137,13 +126,34 @@ describe Gossiper::Notification, "#config" do
     expect(notification.config.class).to be(klass)
   end
 
-  it "resolves standard notifications config" do
-    subject.kind = 'no_kind'
-    resolve_class(subject, Gossiper::EmailConfig)
-  end
-
   it "resolves custom notification config" do
     subject.kind = 'dummy_kind'
     resolve_class(subject, Notifications::DummyKindNotification)
   end
 end
+
+describe Hello do
+  it "persists correctly" do
+    expect do
+      expect do
+        subject.save!(validate: false)
+      end.to change(Gossiper::Notification, :count).by(1)
+    end.to change(Hello, :count).by(1)
+  end
+
+  it { should_not validate_presence_of(:user) }
+end
+
+describe HelloUser do
+  it "persists correctly" do
+    expect do
+      expect do
+        subject.save!(validate: false)
+      end.to change(Gossiper::Notification, :count).by(1)
+    end.to change(HelloUser, :count).by(1)
+  end
+
+
+  it { should validate_presence_of(:user) }
+end
+

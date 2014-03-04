@@ -1,8 +1,7 @@
 module Notifications
-  class <%= class_name %>Notification < Gossiper::EmailConfig
-
-    # def initialize(notification)
-    # end
+  class <%= class_name %>Notification < Gossiper::Notification
+    # uncomment the below line to require user and enable user notifications
+    # require_user
 
     # def from
     # end

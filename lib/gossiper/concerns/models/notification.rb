@@ -8,7 +8,6 @@ module Gossiper
 
         included do
           serialize :data, JSON
-          validates :kind, presence: true
           belongs_to :user, polymorphic: true
         end
 
@@ -46,6 +45,12 @@ module Gossiper
             end
           end
           super(method, *args, &block)
+        end
+
+        module ClassMethods
+          def require_user
+            include Gossiper::Concerns::Models::UserNotification
+          end
         end
 
         protected
