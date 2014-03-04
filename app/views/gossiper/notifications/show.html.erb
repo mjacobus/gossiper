@@ -12,7 +12,7 @@
 
     <tr>
       <th class="title"><%= Gossiper::Notification.human_attribute_name('email_body') rescue t("email_body") %></th>
-      <td><pre><%= decorator.email_object %></pre></td>
+      <td><%= decorator.email_object.encoded.html_safe %></td>
     </tr>
 
 </table>

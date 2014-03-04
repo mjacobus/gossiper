@@ -98,10 +98,10 @@ describe Gossiper::Notification, "#user" do
     admin = AdminUser.create!(email: 'admin@email.com', name: 'Admin')
     user  = AdminUser.create!(email: 'user@email.com', name: 'User')
 
-    admin_notification = Gossiper::Notification.create!(user: admin, kind: 'any')
+    admin_notification = Gossiper::Notification.create!(user: admin )
     expect(admin_notification.user).to eq(admin)
 
-    user_notification = Gossiper::Notification.create!(user: user, kind: 'any')
+    user_notification = Gossiper::Notification.create!(user: user)
     expect(user_notification.user).to eq(user)
   end
 end

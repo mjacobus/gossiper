@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304111357) do
+ActiveRecord::Schema.define(version: 20140304131913) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140304111357) do
   create_table "gossiper_notifications", force: true do |t|
     t.integer  "user_id"
     t.string   "user_type"
-    t.string   "kind"
     t.string   "status"
     t.datetime "delivered_at"
     t.boolean  "read"

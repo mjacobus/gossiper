@@ -17,7 +17,7 @@
     <% decorator = Gossiper::NotificationDecorator.new(notification) %>
     <tr>
       <td><%= decorator.kind %></td>
-      <td><%= decorator.user.email %></td>
+      <td><%= decorator.to %></td>
       <td><%= decorator.delivered_at %></td>
       <td><%= decorator.status %></td>
       <td><%= decorator.read? %></td>

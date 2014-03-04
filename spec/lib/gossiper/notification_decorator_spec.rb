@@ -36,12 +36,6 @@ describe Gossiper::NotificationDecorator do
     end
   end
 
-  describe "#email" do
-    it "returns the notification to email" do
-      expect(subject.email).to eq(notification.user.email)
-    end
-  end
-
   describe "#read?" do
     it "returns the boolean translation" do
       notification.read = true
@@ -111,5 +105,21 @@ describe Gossiper::NotificationDecorator, "#method_missing" do
 
   it "delegates to the notification" do
     expect(subject.respond_to?(:missing)).to be_true
+  end
+end
+
+describe Gossiper::NotificationDecorator, "#to" do
+  let(:user) { User.new(name: 'User Name', email: 'user@email.com') }
+  let(:user_notification) { UserNotification.new(user: user) }
+  let(:guest_notification) { GuestNotification.new(to: 'some@email.com') }
+
+  it "returns the user email when it is a user notification" do
+    subject = described_class.new(user_notification)
+    expect(subject.to).to eq('User Name <user@email.com>')
+  end
+
+  it "returns the user email when it is a user notification" do
+    subject = described_class.new(guest_notification)
+    expect(subject.to).to eq('some@email.com')
   end
 end

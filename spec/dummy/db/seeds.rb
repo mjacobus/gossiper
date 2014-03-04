@@ -5,11 +5,10 @@ def create_user
   })
 end
 
-def create_notification(user, kind, params = {})
-  Gossiper::Notification.create!({
-    user: user,
-    kind: kind
-  }.merge(params))
+def create_notification(user = nil, klass = nil, params = {})
+  default = {}
+  default[:user] = user if user
+  klass.create!(default.merge(params))
 end
 
 def random_status
@@ -23,8 +22,13 @@ end
   sent = rand(2) == 1
   delivered_at = status == 'delivered' ? (n*355).minutes.ago : nil
 
-  notification = create_notification(user, 'user_welcome', {
+  notification = create_notification(user, Notifications::UserNotification, {
     read: rand(2),
+  })
+
+  notification = create_notification(nil, Notifications::GuestNotification, {
+    read: rand(2),
+    to: Faker::Internet.email
   })
 end
 

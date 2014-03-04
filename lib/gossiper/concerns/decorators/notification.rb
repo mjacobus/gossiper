@@ -41,9 +41,8 @@ module Gossiper
         end
 
         def email
-          notification.user.email
+          notification.to
         end
-        alias_method :to, :email
 
         def delivered_at
           decorate_date(notification.delivered_at)

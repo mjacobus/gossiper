@@ -2,6 +2,6 @@ class UserNotification < Gossiper::Notification
   require_user
 end
 
-class GusetNotification < Gossiper::Notification
+class GuestNotification < Gossiper::Notification
 end
 
