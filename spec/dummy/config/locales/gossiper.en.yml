@@ -15,3 +15,7 @@ en:
       user_welcome:
         subject: Welcome!
         title: User Registration
+      hello_user:
+        subject: Hello User
+        title: User Registration
+

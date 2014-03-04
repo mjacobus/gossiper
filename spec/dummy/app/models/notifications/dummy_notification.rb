@@ -1,5 +1,5 @@
 module Notifications
-  class DummyNotification < Gossiper::EmailConfig
+  class DummyNotification < Gossiper::Notification
     def to
       ['to@email.com']
     end

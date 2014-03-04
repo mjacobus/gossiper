@@ -13,7 +13,7 @@ describe Gossiper::Notification, "#data" do
 
   it "serializes data as json" do
     user = stub_model(User, id: 1)
-    subject = described_class.create!({ user: user, kind: 'some_kind' })
+    subject = described_class.create!({ user: user })
     data = {'some_data' => 'some_value' }
     subject.data = data
     expect(subject.data).to be(data)
@@ -116,20 +116,55 @@ describe Gossiper::Notification, "#update_delivered_at!" do
   end
 end
 
-describe Gossiper::Notification, "#config" do
-  module Notifications
-    class DummyKindNotification < Gossiper::EmailConfig
+describe Gossiper::Notification, "#to" do
+  it "returns the given email and address" do
+    subject = described_class.new(to: 'some@email.com')
+    expect(subject.to).to eq('some@email.com')
+  end
+
+  describe "when attached to user" do
+    context "when user has a name" do
+      it "returns email and name" do
+        subject = HelloUser.new(to: 'some@email.com')
+        user = double(email: 'user@email.com', name: 'User Name')
+        expect(subject).to receive(:user).at_least(1).and_return(user)
+        expect(subject.to).to eq('User Name <user@email.com>')
+      end
+    end
+
+    context "when user does not have a name" do
+      it "returns email and name" do
+        subject = HelloUser.new(to: 'some@email.com')
+        user = double(email: 'user@email.com')
+        expect(subject).to receive(:user).at_least(1).and_return(user)
+        expect(subject.to).to eq('user@email.com')
+      end
+    end
+  end
+end
+
+describe Gossiper::Notification do
+  before do
+    Gossiper.configure do |config|
+      config.default_from     = 'from@email.com'
+      config.default_reply_to = 'replyto@email.com'
+      config.default_cc       = ['cc@email.com']
+      config.default_bcc      = ['bcc@email.com']
     end
   end
 
-  def resolve_class(notification, klass)
-    expect(notification.config.class).to be(klass)
-  end
+  subject { HelloUser.new }
+  let(:config)        { Gossiper.configuration }
 
-  it "resolves custom notification config" do
-    subject.kind = 'dummy_kind'
-    resolve_class(subject, Notifications::DummyKindNotification)
-  end
+  its(:template_name) { should eq('hello_user') }
+  its(:template_path) { should eq('') }
+  its(:subject)       { should eq(I18n.t('gossiper.notifications.hello_user.subject')) }
+  its(:from)          { should eq(config.default_from) }
+  its(:cc)            { should eq(config.default_cc) }
+  its(:bcc)           { should eq(config.default_bcc) }
+  its(:attachments)   { should eq({}) }
+  its(:instance_variables){ should eq({}) }
+  its(:subject_variables) { should eq({}) }
 end
 
 describe Hello do

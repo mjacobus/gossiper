@@ -1,13 +1,8 @@
 require 'spec_helper'
 
-module Notifications
-  class DummyKindNotification < Gossiper::EmailConfig
-  end
-end
-
 describe Gossiper::Mailer do
   let(:user)         { User.create!(name: 'User Name', email: 'user@email.com') }
-  let(:notification) { Gossiper::Notification.create(user: user, kind: 'dummy') }
+  let(:notification) { Notifications::DummyNotification.create(user: user) }
 
   before do
     Gossiper.configure do |c|
@@ -23,11 +18,7 @@ describe Gossiper::Mailer do
   end
 
   describe'.mail_for' do
-    before do
-      notification.kind = 'dummy'
-    end
-
-    let(:config)             { Notifications::DummyNotification.new(notification) }
+    let(:config)             { notification }
     subject                  { described_class.mail_for(notification) }
 
     its(:subject)            { should eq(config.subject) }

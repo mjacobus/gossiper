@@ -2,13 +2,13 @@ module Gossiper
   class Mailer < ActionMailer::Base
 
     def mail_for(notification)
-      config = notification.config
+      @notification = NotificationDecorator.new(notification)
+
+      config = notification
 
       config.attachments.each do |filename, file|
         attachments[filename] = file
       end
-
-      @notification = NotificationDecorator.new(notification)
 
       config.instance_variables.each do |name, value|
         instance_variable_set("@#{name}", value)

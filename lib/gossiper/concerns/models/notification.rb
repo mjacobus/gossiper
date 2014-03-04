@@ -7,6 +7,7 @@ module Gossiper
         STATUSES = %w(pending delivered)
 
         included do
+          include Gossiper::Concerns::Models::EmailSettings
           serialize :data, JSON
           belongs_to :user, polymorphic: true
         end
@@ -17,25 +18,6 @@ module Gossiper
 
         def data
           read_attribute(:data).presence || {}
-        end
-
-        def deliver
-          mail.deliver
-          update_delivered_at!
-        end
-
-        def deliver!
-          mail.deliver!
-          update_delivered_at!
-        end
-
-        def kind=(value)
-          value = value.present? ? value.parameterize.underscore : nil
-          write_attribute(:kind, value)
-        end
-
-        def config
-          ClassResolver.new.resolve(kind).constantize.new(self)
         end
 
         def method_missing(method, *args, &block)
@@ -53,10 +35,11 @@ module Gossiper
           end
         end
 
-        protected
-          def mail
-            Gossiper::Mailer.mail_for(self)
-          end
+        def mail
+          Gossiper::Mailer.mail_for(self)
+        end
+
+        private
 
           def update_delivered_at!
             self.delivered_at = Time.now
