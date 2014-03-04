@@ -62,42 +62,6 @@ email = Gossiper::Mailer.notification_for(notification)
 email.deliver! # or email.deliver
 ```
 
-### The notification Config
-Unless a custom class exist for the notification.kind, the defaults apply:
-
-#### The default configuration
-
-```ruby
-mail_settings = Gossiper::EmailConfig.new(notification)
-
-mail_setting.user                # => user
-
-mail_settings.notification       # => notification
-
-mail_settings.to                 # default to user.email, including name, if user
-                                 # responds to name
-
-mail_settings.cc                 # => nil
-
-mail_settings.bcc                # => nil
-
-mail_settings.subject   # defaults to
-                        # I181.t('gossiper.notifications.user_welcome.subject')
-                        # 'user_welcome' is the notification.kind
-
-mail_settings.template_name      # user_welcome_notifcation
-                                 # defaults to {notification_type}_notification
-
-mail_settings.template_path      # notification
-
-mail_settings.instance_variables # Hash
-                                 # this are the variables that will be available
-                                 # on the template
-                                 # You can customize that ass seen next
-
-mail_settings.attachments # Array of files
-```
-
 #### Creating custom configuration
 
 If you want to create a custom configuration for the kind ```user_welcome``` all you need to do is
@@ -105,7 +69,7 @@ to create a class like follows:
 
 ```ruby
 # app/models/notifications/user_welcome_notification.rb
-class Notifications::UserWelcomeNotification < Gossiper::EmailConfig
+class Notifications::UserWelcomeNotification < Gossiper::Notification
   def bcc
     [ notification.user.boss.email  ]
   end
@@ -120,11 +84,11 @@ You can generate a new type of message by running the following command:
 
 That will create the following files:
 
-- ```app/models/notifications/invoice_available_notification.rb```
+- ```app/models/notifications/invoice_available.rb```
 - ```app/views/notifications/invoice_available.html.erb```
-- ```spec/models/notifications/invoice_available_notification_spec.rb```
+- ```spec/models/notifications/invoice_available_spec.rb```
 or
-- ```test/models/notifications/invoice_available_notification_test.rb```
+- ```test/models/notifications/invoice_available_test.rb```
 
 
 ## Configuration
@@ -141,8 +105,10 @@ pt-BR:
     notifications:
       user_welcome:
         subject: Bem vindo!
-      invoice_available:
+        title: Notificação de Boas Vindas
+      notifications/invoice_available:
         subject: Sua fatura já está disponível! (yay)
+        title: Notificação de Invoice
 ```
 
 
