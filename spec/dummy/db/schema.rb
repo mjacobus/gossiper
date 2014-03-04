@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304131816) do
+ActiveRecord::Schema.define(version: 20140304160545) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140304131816) do
     t.text     "data"
     t.string   "type"
     t.text     "to"
+    t.text     "dynamic_attributes"
   end
 
   create_table "users", force: true do |t|

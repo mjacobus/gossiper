@@ -36,6 +36,16 @@ notification.delivered? # => false
 notification.status     # => 'pending'
 ```
 
+### Adding dinamic attributes to the notification
+
+```ruby
+class MyNotification < Gossiper::Notification
+  dynamic_attributes :name, :phone
+
+  validates :name, presence: true
+end
+```
+
 ### Adding aditional data to the notification
 
 Notification has a field called data, prepared for storing aditinal data. It will be serialized as Json.

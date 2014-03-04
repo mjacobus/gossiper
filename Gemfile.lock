@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gossiper (0.5.1)
+    gossiper (0.5.2)
       kaminari
       less-rails
       therubyracer
