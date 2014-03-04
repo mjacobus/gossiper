@@ -5,6 +5,7 @@ require "gossiper/email_config"
 require "gossiper/mailer"
 require "gossiper/configuration"
 require "gossiper/notification_decorator"
+require "gossiper/class_resolver"
 
 module Gossiper
 

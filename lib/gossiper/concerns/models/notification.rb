@@ -36,13 +36,7 @@ module Gossiper
         end
 
         def config
-          begin
-            klass = "Notifications::#{kind.classify}Notification"
-            klass.constantize.new(self)
-          rescue NameError
-            klass = Gossiper.configuration.default_notification_config_class
-            klass.constantize.new(self)
-          end
+          ClassResolver.new.resolve(kind).constantize.new(self)
         end
 
         def method_missing(method, *args, &block)
@@ -55,17 +49,14 @@ module Gossiper
         end
 
         protected
-        def mail
-          Gossiper::Mailer.mail_for(self)
-        end
+          def mail
+            Gossiper::Mailer.mail_for(self)
+          end
 
-        def update_delivered_at!
-          self.delivered_at = Time.now
-          save!
-        end
-
-
-
+          def update_delivered_at!
+            self.delivered_at = Time.now
+            save!
+          end
 
       end
     end
