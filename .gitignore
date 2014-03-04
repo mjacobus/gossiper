@@ -10,3 +10,4 @@ coverage
 spec/dummy/config/initializers/setup_email.rb
 spec/dummy/config/email.yml
 spec/dummy/config/initializers/email_setup.rb
+smtp.yml

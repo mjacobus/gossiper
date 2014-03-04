@@ -22,7 +22,8 @@ en:
         subject: The Subject
         title: The Title
       notifications/guest_notification:
-        title: Guest Subject
+        title: Guest
+        subject: Guest Subject
       notifications/user_notification:
         title: User
         subject: User Subject
